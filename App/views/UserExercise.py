@@ -18,21 +18,21 @@ userexercise_views = Blueprint('userexercise_views', __name__, template_folder='
 @userexercise_views.route('/userexercises', methods=['GET'])
 def get_userexercise_page():
     userexercises = get_all_userexercise()
-    return render_template('profile.html', userExercise=userexercises)
+    return render_template('equipment.html', userExercise=userexercises)
 
 
-@userexercise_views.route('/userexercises/<int: id>', methods=['GET'])
+@userexercise_views.route('/userexercises/<int:id>', methods=['GET'])
 def get_userexercise_action(id):
     userexercises = get_userexercise(id)
-    return render_template('profile.html', userExercise=userexercises)
+    return render_template('equipment.html', userExercise=userexercises)
 
 
-@userexercise_views.route('/userexercises/delete/<int: id>/', methods=['DELETE'])
+@userexercise_views.route('/userexercises/delete/<int:id>/', methods=['DELETE'])
 def deleteuserexercise_action(id):
     userexercises = delete_userexercise(id)
-    return render_template('profile.html', userExercise=userexercises)
+    return render_template('equipment.html', userExercise=userexercises)
 
-@userexercise_views.route('/userexercises/update/<int: id>/', methods=['PUT'])
+@userexercise_views.route('/userexercises/update/<int:id>/', methods=['PUT'])
 def update_userexercise_action(id):
     userexercise = update_userexercise(id)
-    return render_template('profile.html', userExercise=userexercises)
+    return render_template('equipment.html', userExercise=userexercises)

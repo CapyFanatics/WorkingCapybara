@@ -16,16 +16,16 @@ Exercise_views = Blueprint('Exercise_views', name, template_folder='../templates
 @Exercise_views.route('/exercises', methods=['GET'])
 def get_Exercise_page():
     exercises = get_all_exercises()
-    return render_template('profile.html', exercise=exercises)
+    return render_template('equipment.html', exercise=exercises)
 
 
-@Exercise_views.route('/exercises/<int: id>', methods=['GET'])
+@Exercise_views.route('/exercises/<int:id>', methods=['GET'])
 def get_Exercise_Action(id):
     exercises = get_exercise(id)
-    return render_template('profile.html', exercise=exercises)
+    return render_template('equipment.html', exercise=exercises)
 
 
-@Exercise_views.route('/exercises/<string: name>', methods=['GET'])
+@Exercise_views.route('/exercises/<string:name>', methods=['GET'])
 def get_Exercise_Action(name):
     exercises = get_exercise_by_name(name)
-    return render_template('profile.html', exercise=exercises)
+    return render_template('equipment.html', exercise=exercises)
