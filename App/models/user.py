@@ -9,9 +9,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     exercise = db.relationship('UserExercise', backref='user')
 
-    def init(self, username, password, email):
+    def init(self, username, password):
         self.username = username
-        self.email = email
         self.set_password(password)
 
     def change_email(self, new_email):
