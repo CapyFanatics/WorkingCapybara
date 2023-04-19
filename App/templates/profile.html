@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  * {
+    background-color: black;
+  }
+
+  #user  {
+    width: 250px;
+    height: 250px;
+    float:center;
+    background-color: transparent;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    
+  }
+
+  #profile {
+    
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0;
+    margin-bottom:0; 
+    width:500px;
+    text-align: left;
+    background-color: #8b0000;;
+    border-radius: 4px;
+  }
+
+  #current{
+    display:block;
+    margin-left:30px;
+    margin-right:auto;
+    margin-top:0;
+    margin-bottom:0; 
+    width:400px;
+    text-align: left;
+    background-color: #8b0000;;
+    border-radius: 4px;
+  }
+
+  #profileheader {
+    font-size: 50px;
+    text-align: center;
+    background-color: #8b0000;;
+    color: white;
+    font-family: fantasy;
+    padding-bottom: 1px;
+    margin-bottom:1px;
+  }
+
+  #profileForm {
+    margin-top: 5px;
+    background-color: #8b0000;;
+    border-radius: 4px;
+    color:white;
+  }
+
+  input[type=password],
+  input[type=username], input[type=email]  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color:white;
+
+  }
+
+  input[type=submit] {
+       width: 50%;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 5px 18px 120px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: fantasy;
+    letter-spacing:2px;
+    font-size: 20px;
+    
+  }
+
+  label{
+    font-family: fantasy;
+    letter-spacing:2px;
+  }
+
+  a{
+    font-family: fantasy;
+    color:white;
+    text-decoration:none;
+    margin-left:123px;
+    align:center;
+  }
+  
+</style>
+
+<body>
+  <div class="content fill-space">
+    
+    <span class="subcontent center-vertical" id="profile">
+      
+      <h4 id="profileheader" class="center">User Profile</h4>
+      
+      <img id="user" src="user.png">
+      <div id="current">
+        Current Username: 
+        Current Email:
+      </div>
+      <form id="profileForm" method="POST" action="/profile" style="padding:1em">
+
+        <div class="row">
+          <label for="email">New Email</label>
+          <input placeholder="email" name="email" type="email" class="validate">
+        </div>
+        
+        <div class="row">
+          <label for="username">New Username</label>
+          <input placeholder="username" name="username" type="username" class="validate">
+        </div>
+
+        <div class="row">
+          <label for="password">New Password</label>
+          <input placeholder="password..." name="password" type="password" class="validate">
+        </div>
+
+         <div class="row justify-content">
+         
+             <input type="submit" class="btn" value="SAVE">
+            </div>
+          <div class="row justify-content">
+       
+          <a href="equipment.html">&larr; Return to home page</a>
+
+           
+          
+        </div>
+
+      </form>
+    </span>
+  </div>
+</body>
