@@ -103,7 +103,8 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         """Check hashed password."""
         return check_password_hash(self.password, password)
-
+    
+    
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
