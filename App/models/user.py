@@ -9,9 +9,7 @@ class User(db.Model, UserMixin):
 
     def __init__(self, username, password):
         self.username = username
-        self.set_password(password)from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import UserMixin
-from App.database import db
+        self.set_password(password)
 
 
 class UserExercise(db.Model):
