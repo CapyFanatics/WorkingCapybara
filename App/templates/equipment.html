@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+
+  }
+
+
+  section,
+  aside,
+  article {
+    padding: 1em;
+  }
+
+
+  #header {
+    color: white;
+    background-color: rgba(255, 0, 0);
+    font-size: 100px;
+    display:flex;
+    flex-direction: row;
+    font-family: fantasy;
+    padding: 1px;
+    background-image: url("redback.png");
+    background-size:100% 100%;
+
+    
+  }
+
+  #logout {
+    float: right;
+    margin-left: 400px;
+    margin-top: 80px;
+    background-color: lightgrey;
+    height: 40px;
+    width: 80px;
+    border-radius: 4px;
+    
+  }
+
+  #logout a {
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-family: fantasy;
+    cursor:pointer;
+
+  }
+
+  #profile {
+    margin-left: 15px;
+    margin-top: 30px;
+    background-color: red;
+    height: 40px;
+    width: 140px;
+    border-radius: 4px;
+    cursor:pointer;
+  }
+
+  #generate {
+    margin-left: 15px;
+    margin-top: 30px;
+    background-color: red;
+    height: 70px;
+    width: 140px;
+    border-radius: 4px;
+    cursor:pointer;
+  }
+
+  #capspan {
+    position: relative;
+    padding-bottom: 50px;
+    padding-top:50px;
+  }
+
+  #sidebar {
+    width: 8em;
+    background-color: black;
+  
+  }
+
+  footer {
+    color: white;
+    background-color: black;
+    font-size: 60px;
+    flex-grow: 1;
+    font-family: fantasy;
+    padding: 0.1em;
+    background-image: url("redfoot.png");
+    background-size:100% 100%;
+  }
+
+
+  aside {
+    color: #212121;
+    background-color: #BBDEFB;
+    flex-grow: 1
+    
+  }
+
+  section {
+    background-color: #8b0000;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    font-family: fantasy;
+    letter-spacing: 2px;
+   
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+
+    color: white;
+    flex-grow: 7;
+   
+    
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
+  }
+
+  #selected{
+    float:right;
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(0,0,0);
+    border-radius:5px;
+    margin-left: 500px;
+    font-family: fantasy;  
+    letter-spacing: 2px;
+    padding-left:15px;
+    padding-right:15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 3;
+  }
+  .text-center{
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex-grow: 8;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .card{
+    float:right;
+    margin-right:25px;
+    margin-left:-450px;
+  }
+  
+  input[type=submit]  {
+    width: 40px;
+    height:40px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: fantasy;
+    font-size:20px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+  }
+
+
+  input[type=text-sets], input[type=text-reps] {
+    width:100px;
+    height:40px;
+   
+  }
+  .btn{
+    width:50px;
+    height:40px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: fantasy;
+    font-size:20px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+  }
+  
+  .btn:hover, .btn:focus {
+    background-color: lightpink;
+    cursor: pointer;
+  }
+  .Addbtn{
+    float:right;
+    width:50px;
+    height:40px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: fantasy;
+    font-size:20px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+  }
+
+  .Addbtn:hover, .Addbtn:focus {
+    background-color: grey;
+    cursor: pointer;
+  }
+
+  .closebtn{
+
+    cursor: pointer;
+    font-family: fantasy;
+    font-size:20px;
+    margin-left:160px;
+  
+    margin-top:10px;
+  }
+ .modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 40%;
+  top: 0;
+  width: 23%; 
+  height: 30%; 
+  border-style:solid;
+   border-color: black;
+  padding-left: 20px;
+  overflow: auto; 
+  color: rgb(0,0,0); 
+  background-color: rgba(255,255,255);
+}
+
+  #modal-header{
+    display:flex;
+    flex-direction:row;  
+    }
+  
+  #close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-let:150px;
+
+}
+
+  #close:hover, #close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+
+  }
+  
+  ul{
+  padding-left:2px;
+  width: 400px;
+  list-style-type: none;
+    
+}
+
+  li{
+    padding-bottom:10px;
+  }
+
+ table, th, td {
+  border:  solid;
+  border-collapse: collapse;
+ 
+}
+
+  th, td {
+    width:250px;
+  }
+
+  
+</style>
+
+<body>
+
+
+  <div id="header">
+    <img src="capy.png" width="140px" height="200px"></img>
+    <span id="capspan">CAPYBARA UNLEASHED </span>
+
+    <button id="logout"><a href="login.html" class="w3-bar-item w3-button">Logout</a></button>
+
+
+
+
+  </div>
+  <main class="row">
+
+    <div class="sidebar" id="sidebar">
+
+
+      <button id="profile"><a href="#" class="w3-bar-item w3-button">Profile</a></button>
+      <button id="generate"><a href="#" class="w3-bar-item w3-button">Generate Random Workout</a></button>
+
+
+    </div>
+
+    <article>
+      <section>
+        
+          <div class=" list-container collection" style="max-height: 84vh; width:10em;">
+            <div class="list-item">   
+             
+              <th><h2><u>EQUIPMENT</u></h2></th>
+              <form  method="GET" action="/app/<int:equip_id>" >
+                <ul>
+                 
+
+                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
+                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
+
+
+                </ul>
+              </form>               
+             
+            </div>
+          </div>
+
+
+        <div class="card">
+          <div  id="selected">
+  
+            <h2>Selected Exercise</h2>
+            
+         
+              
+                 
+                <img src=Capybara.jpg width= "300px" height="300px">
+                    <div class="card-content">
+    
+                            <span class="card-title">
+                             <h3>Name of exercise</h3>
+                            </span>
+
+                      
+                            
+                            <div class="row">
+                              <p>Equipment needed</p>
+                              <button class="btn right" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
+                            </div>
+
+                            <!---<div class="row">
+
+                              <p>Exercise 2: selected_exercise.type2</p>
+
+                              <input class="btn green  " type="submit" id="addBtn" value="ADD" />
+                            </div>
+
+                            <div class="row">
+
+                              <p>Exercise 3: selected_exercise.type3</p>
+
+                              <input class="btn green  " type="submit" id="addBtn" value="ADD" />
+                            </div>-->
+                       
+                            <div class="modal" id="add-modal" style="opacity: 1; top:20%; transform: scaleX(1) scaleY(1); z-index:100">
+
+                              <form name="addForm" id="addExer" method="POST" action="/add-exercise/exercise.id">
+
+
+                                <div class="add-modal-content">
+                                  <div id="modal-header">
+                                    <span class="add-modal-title"><h5>Add Exercise</h5></span>
+                                   <span onclick="document.getElementById('add-modal').style.display='none'" id="close" class="closebtn red right"> &times;</span>
+                                    
+                                  </div>
+                                  <div class="input-field">
+
+                                    <input type="text-sets" name="Sets" id=exercise.sets class="materialize-textarea">
+                                    <label for="text-sets"> Sets</label> 
+                                    <input type="text-reps" name="Reps" id=exercise.reps  class="materialize-textarea">
+
+
+
+                                    <label for="text-reps"> Reps</label> 
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                            
+                              <button class="Addbtn" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
+                            </div>
+                              </form>
+                            </div>
+                                
+                     </div>
+                               
+            
+          </div>
+      
+        </div>
+
+
+
+        <div class="col" id="Userexer">
+        <h4>RODENT REGIMEN/ THE CAPYBARA WORKOUT</h4>
+        
+         <table>
+            <th>Exercise Name</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <tbody>
+              <tr> 
+                <td>Exercise Name</td>
+
+                <td> sets </td>
+                <td> reps </td>
+               </tr>
+               <tr> 
+                <td>Exercise Name</td>
+                <td> sets </td>
+                <td> reps </td>
+
+               </tr>
+              </tbody>
+            
+          </table>
+        </div>          
+      </section>
+
+
+
+    </article>
+  </main>
+  <footer>Footer</footer>
+
+
+
+
+  
+</body>
+
+
+
+</html>
+
