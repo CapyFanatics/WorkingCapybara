@@ -11,6 +11,43 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
 
+    def add_exercise(self, exercise_id, name, reps, sets):
+        exercise = Exercise.query.get(exercise_id)
+
+        if exercise:
+            try:
+                user_exercise = UserExercise(self.id, exercise_id, name, reps, sets)
+                db.session.add(user_exercise)
+                db.session.commit()
+                return user_exercise
+            except Exception:
+                db.session.rollback()
+                return None
+
+        return None
+
+    def delete_exercise(self, exercise_id, name, reps, sets):
+        exercise = Exercise.query.get(exercise_id)
+
+        if exercise.user == self:
+            db.session.delete(exercise)
+            db.session.commit()
+            return True
+        return None
+
+    def edit_exercise(self, exercise_id, name, reps, sets):
+        exercise = Exercise.query.get(exercise_id)
+
+        if exercise.user == self:
+            exercise.name = name
+            exercise.reps = reps
+            exercise.sets = sets
+
+            db.session.add(exercise)
+            db.session.commit()
+            return True
+        return None
+
     def get_json(self):
         return{
             'id': self.id,
