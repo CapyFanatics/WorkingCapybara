@@ -343,8 +343,11 @@
               <form  method="GET" action="/app/<int:equip_id>" >
                 <ul>
                  
-                  <li><a href="/app/{{equip.id}}" id="{{equip.id}}" class="collection-item">Exercise</a></li>
-                  <li><a href="/app/{{equip.id}}" id="{{equip.id}}" class="collection-item">Exercise</a></li>
+
+                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
+                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
+
+
                 </ul>
               </form>               
              
@@ -375,17 +378,24 @@
                             </div>
 
                             <!---<div class="row">
-                              <p>Exercise 2: {{selected_exercise.type2}}</p>
+
+                              <p>Exercise 2: selected_exercise.type2</p>
+
                               <input class="btn green  " type="submit" id="addBtn" value="ADD" />
                             </div>
 
                             <div class="row">
-                              <p>Exercise 3: {{selected_exercise.type3}}</p>
+
+                              <p>Exercise 3: selected_exercise.type3</p>
+
                               <input class="btn green  " type="submit" id="addBtn" value="ADD" />
                             </div>-->
                        
                             <div class="modal" id="add-modal" style="opacity: 1; top:20%; transform: scaleX(1) scaleY(1); z-index:100">
-                              <form name="addForm" id="addExer" method="POST" action="/add-exercise/{{execise.id}}">
+
+                              <form name="addForm" id="addExer" method="POST" action="/add-exercise/exercise.id">
+
+
                                 <div class="add-modal-content">
                                   <div id="modal-header">
                                     <span class="add-modal-title"><h5>Add Exercise</h5></span>
@@ -393,9 +403,13 @@
                                     
                                   </div>
                                   <div class="input-field">
-                                    <input type="text-sets" name="Sets" id={{exercise.sets}} class="materialize-textarea">
+
+                                    <input type="text-sets" name="Sets" id=exercise.sets class="materialize-textarea">
                                     <label for="text-sets"> Sets</label> 
-                                    <input type="text-reps" name="Reps" id={{exercise.reps}}  class="materialize-textarea">
+                                    <input type="text-reps" name="Reps" id=exercise.reps  class="materialize-textarea">
+
+
+
                                     <label for="text-reps"> Reps</label> 
                                   </div>
                                 </div>
@@ -426,13 +440,15 @@
             <tbody>
               <tr> 
                 <td>Exercise Name</td>
-                <td> {{sets}} </td>
-                <td> {{reps}} </td>
+
+                <td> sets </td>
+                <td> reps </td>
                </tr>
                <tr> 
                 <td>Exercise Name</td>
-                <td> {{sets}} </td>
-                <td> {{reps}} </td>
+                <td> sets </td>
+                <td> reps </td>
+
                </tr>
               </tbody>
             
