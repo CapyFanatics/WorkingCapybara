@@ -31,3 +31,9 @@ def update_user(id, username):
         return db.session.commit()
     return None
     
+def jwt_authenticate(username, password):
+    user = get_user_by_username(username)
+    if user and check_password_hash(user.password, password):
+        return user
+    else:
+        return None

@@ -6,6 +6,7 @@ from.index import index_views
 
 from App.controllers import (
     create_user,
+    update_user,
     jwt_authenticate, 
     get_all_users,
     get_all_users_json,
@@ -18,6 +19,11 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 def get_user_page():
     users = get_all_users()
     return render_template('users.html', users=users)
+
+@user_views.route('/users/update', methods=['PUT'])
+def update_user(id, username):
+    user = update_user(id, username)
+    return render_template('users.html', users=user)
 
 @user_views.route('/api/users', methods=['GET'])
 def get_users_action():
