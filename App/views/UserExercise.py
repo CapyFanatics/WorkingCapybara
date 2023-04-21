@@ -20,6 +20,7 @@ API_URL = 'https://api.api-ninjas.com/v1/exercises'
 @userexercise_views.route('/userexercises', methods=['GET'])
 def get_userexercise_page():
     userexercises = get_all_userexercise()
+
     return render_template('userexercises.html', userexercises=userexercises)
 
 @userexercise_views.route('/userexercises/<int:id>', methods=['GET'])
@@ -43,3 +44,4 @@ def create_userexercise_action():
     data = request.json
     create_userexercise(data['name'], data['reps'], data['sets'], data['weight'])
     return jsonify({'message': f'userexercise {data["name"]} created'})
+

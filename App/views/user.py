@@ -21,7 +21,9 @@ def get_user_page():
     return render_template('users.html', users=users)
 
 @user_views.route('/users/update', methods=['PUT'])
+
 def update_user(id, username):
+
     user = update_user(id, username)
     return render_template('users.html', users=user)
 
