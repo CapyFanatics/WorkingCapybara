@@ -1,6 +1,8 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
+from .Exercise import Exercise
+from .userExercise import UserExercise
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +18,9 @@ class User(db.Model, UserMixin):
 
         if exercise:
             try:
-                user_exercise = UserExercise(self.id, exercise_id, name, reps, sets)
+
+                user_exercise = UserExercise(self.id, exercise_id, name, reps, sets, weight)
+
                 db.session.add(user_exercise)
                 db.session.commit()
                 return user_exercise
@@ -26,7 +30,9 @@ class User(db.Model, UserMixin):
 
         return None
 
-    def delete_exercise(self, exercise_id, name, reps, sets):
+
+    def delete_exercise(self, exercise_id):
+
         exercise = Exercise.query.get(exercise_id)
 
         if exercise.user == self:
@@ -35,18 +41,28 @@ class User(db.Model, UserMixin):
             return True
         return None
 
-    def edit_exercise(self, exercise_id, name, reps, sets):
-        exercise = Exercise.query.get(exercise_id)
+
+    def edit_exercise(self, exercise_id, name, reps, sets, weight):
+        exercise = UserExercise.query.get(exercise_id)
+
 
         if exercise.user == self:
             exercise.name = name
             exercise.reps = reps
             exercise.sets = sets
 
+            exercise.weight = weight
+
+
             db.session.add(exercise)
             db.session.commit()
             return True
         return None
+
+
+    def change_password(self, new_password):
+        self.password = new_password
+        self.save()
 
     def get_json(self):
         return{

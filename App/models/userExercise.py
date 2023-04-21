@@ -1,4 +1,5 @@
 from App.database import db
+from .Exercise import Exercise
 
 class UserExercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +12,7 @@ class UserExercise(db.Model):
     sets = db.Column(db.Integer, nullable=False)
     weight = db.Column(db.Float)
 
-    def repr(self):
+    def __repr__(self):
       return f'<UserExercise {self.id} : {self.name} User {self.user.username}>'
 
 
