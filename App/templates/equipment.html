@@ -274,7 +274,7 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-let:150px;
+  margin-left:150px;
 
 }
 
@@ -339,14 +339,14 @@
           <div class=" list-container collection" style="max-height: 84vh; width:10em;">
             <div class="list-item">   
              
-              <th><h2><u>EQUIPMENT</u></h2></th>
-              <form  method="GET" action="/app/<int:equip_id>" >
+              <th><h2><u>Exercises</u></h2></th>
+              <form  method="GET" action="/equipment" >
                 <ul>
-                 
 
-                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
-                  <li><a href="/app/equipment.id" id="equipment.id" class="collection-item">Exercise</a></li>
-
+                 {% for item in data %}
+                 {{item['name']}}
+                 <h1></h1>
+                 {% endfor %}
 
                 </ul>
               </form>               

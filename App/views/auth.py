@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user as jwt_current_user
 from flask_login import login_required, login_user, current_user, logout_user
+import requests
 
 from App.models.user import User
 from App.models.Exercise import Exercise
@@ -15,10 +16,14 @@ from App.controllers import (
     create_user,
     jwt_authenticate,
     login,
-    get_exercise_by_type
+    get_exercise_by_type,
+    get_api_data
 )
 
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
+
+API_URL = 'https://wger.de/api/v2/exercise/?language=2'
+API_KEY = 'db41e887abdeee70f768105f746b93afa2a1e856'
 
 '''
 Page/Action Routes
@@ -101,7 +106,8 @@ def logout_action():
 
 @auth_views.route('/equipment', methods=['GET'])
 def equipment_action():
-    return render_template("equipment.html")
+    data = get_api_data(API_URL, API_KEY)
+    return render_template("equipment.html", data=data['results'])
 
 '''
 API Routes
