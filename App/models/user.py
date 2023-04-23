@@ -69,19 +69,19 @@ class User(db.Model, UserMixin):
 
 
     def change_password(self, new_password):
-        self.set_password(new_password)
+        self.password = new_password
         self.save()
 
     def get_json(self):
-        return {
+        return{
             'id': self.id,
             'username': self.username
         }
 
     def set_password(self, password):
         """Create hashed password."""
-        self.password_hash = generate_password_hash(password, method='sha256')
-
+        self.password = generate_password_hash(password, method='sha256')
+    
     def check_password(self, password):
         """Check hashed password."""
         return check_password_hash(self.password, password)
