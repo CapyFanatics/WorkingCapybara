@@ -10,29 +10,24 @@ from App.database import db
 
 from flask_login import LoginManager
 
-from App.models.user import User
-from App.models.Exercise import Exercise
-from App.models.userExercise import UserExercise
-from App.database import db
-
-from flask_login import LoginManager
-
 from.index import index_views
 
 from App.controllers import (
     create_user,
     jwt_authenticate,
     login,
-
     get_exercise_by_type,
-    get_api_data
-
+    get_api_data,
+    get_api_image,
+    create_Exercise
 )
 
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 API_URL = 'https://wger.de/api/v2/exercise/?language=2'
 API_KEY = 'db41e887abdeee70f768105f746b93afa2a1e856'
+
+API_IMAGE = 'https://wger.de/api/v2/exerciseimage/'
 
 '''
 Page/Action Routes
@@ -107,7 +102,6 @@ def signup_action():
     return redirect('/signup')
 
 @auth_views.route('/logout', methods=['GET'])
-@login_required
 def logout_action():
     logout_user()
     return redirect('/')
@@ -115,10 +109,15 @@ def logout_action():
 
 @auth_views.route('/equipment', methods=['GET'])
 def equipment_action():
-
     data = get_api_data(API_URL, API_KEY)
-    return render_template("equipment.html", data=data['results'])
 
+    for item in data['results']:
+        name = item['name']
+        uuid = item['uuid']
+        create_Exercise(name=name, uuid=uuid)
+
+    images = get_api_image(API_IMAGE, API_KEY)
+    return render_template("equipment.html", data=data['results'], images=images['results'])
 
 '''
 API Routes
