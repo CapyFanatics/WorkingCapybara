@@ -2,6 +2,7 @@
 <html lang="en">
 
 <style>
+  @media screen {
   * {
     background-color: black;
   }
@@ -14,10 +15,9 @@
     display:block;
     margin-left:auto;
     margin-right:auto;
-    margin-top:0;
-    margin-bottom:0;  }
+  }
 
-  #signup {
+  #login {
     
     display:block;
     margin-left:auto;
@@ -28,7 +28,7 @@
     border-radius: 4px;
   }
 
-  #signupheader {
+  #loginheader {
     font-size: 50px;
     text-align: center;
     background-color: #8b0000;;
@@ -38,7 +38,7 @@
     margin-bottom:1px;
   }
 
-  #signupForm {
+  #LoginForm {
     margin-top: 5px;
     background-color: #8b0000;;
     border-radius: 4px;
@@ -84,7 +84,7 @@
     text-decoration:none;
     margin-left:20px;
   }
-  
+  }
 </style>
 
 <body>
@@ -92,7 +92,7 @@
     
     <span class="subcontent center-vertical" id="login">
       <h4 id="loginheader" class="center">Login</h4>
-      <img id="capy" src="capy.png">
+      <img id="capy" src="https://cdn.discordapp.com/attachments/1097966144289247344/1099496097182912572/capybara_workout-removebg-preview.png">
       <form id="LoginForm" method="POST" action="/login" style="padding:1em">
 
         <div class="row">
