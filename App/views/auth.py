@@ -3,7 +3,9 @@ from flask_jwt_extended import jwt_required, current_user as jwt_current_user
 from flask_login import login_required, login_user, current_user, logout_user
 import requests
 
+
 from App.controllers.user import User
+
 
 from App.models.user import User
 from App.models.Exercise import Exercise
@@ -121,7 +123,9 @@ def equipment_action():
         uuid = item['uuid']
         create_Exercise(name=name, uuid=uuid)
 
+
     images = get_api_image(uuid)
+
     return render_template("equipment.html", data=data['results'], images=images['results'])
 
 
