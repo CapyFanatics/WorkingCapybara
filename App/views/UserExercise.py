@@ -30,18 +30,18 @@ def get_userexercise_action(id):
 
 @userexercise_views.route('/userexercises/delete/<int:id>', methods=['DELETE'])
 def delete_userexercise_action(id):
-    userexercise = delete_userexercise(id)
+    delete_userexercise(id)
     return jsonify({'message': f'userexercise with id {id} deleted'})
 
 @userexercise_views.route('/userexercises/update/<int:id>', methods=['PUT'])
 def update_userexercise_action(id):
     data = request.json
-    userexercise = update_userexercise(id, data['name'], data['reps'], data['sets'], data['weight'])
+    update_userexercise(id, data['name'], data['reps'], data['sets'], data['weight'])
     return jsonify({'message': f'userexercise with id {id} updated'})
 
 @userexercise_views.route('/userexercises/create', methods=['POST'])
 def create_userexercise_action():
     data = request.json
-    create_userexercise(data['name'], data['reps'], data['sets'], data['weight'])
+    create_UserExercise(data['name'], data['reps'], data['sets'], data['weight'])
     return jsonify({'message': f'userexercise {data["name"]} created'})
 

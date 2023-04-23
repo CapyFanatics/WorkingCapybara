@@ -7,8 +7,7 @@
   <title>Document</title>
 </head>
 <style>
-
-@media screen {
+   @media screen {
 body {
     display: flex;
     flex-direction: column;
@@ -366,7 +365,7 @@ body {
                 <ul>
 
                  {% for item in data %}
-                 {{item['name']}}
+                 <li>{{item['name']}}</li>
                  <h1></h1>
                  {% endfor %}
 
@@ -377,27 +376,28 @@ body {
           </div>
 
 
-        <div class="card">
-          <div  id="selected">
-  
-            <h2>Selected Exercise</h2>
-            
-         
-              
-                 
-                <img src=Capybara.jpg width= "300px" height="300px">
-                    <div class="card-content">
+          <div class="card">
+            <div  id="selected">
+              <h2>Selected Exercise</h2>
+                    
+                {% for item in images %} 
+                  <img src="{{item['image']}}" width= "300px" height="300px">
+                      <div class="card-content">
     
-                            <span class="card-title">
-                             <h3>Name of exercise</h3>
-                            </span>
-
-                      
-                            
-                            <div class="row">
-                              <p>Equipment needed</p>
-                              <button class="btn right" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
-                            </div>
+                        <span class="card-title">
+                          <h3>Name of exercise</h3>
+                        </span>
+                        <!-- {% for item in images %} -->
+                        <!-- {{item['image']}} -->
+                        <!-- <img src="{{item['image']}}">
+                        {% endfor %} -->
+                        
+                              
+                        <div class="row">
+                          <p>Equipment needed</p>
+                          <button class="btn right" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
+                        </div>
+                {% endfor %}                
 
                             <!---<div class="row">
 
@@ -453,44 +453,31 @@ body {
 
 
         <div class="col" id="Userexer">
-        <h4>RODENT REGIMEN/ THE CAPYBARA WORKOUT</h4>
-        
-         <table>
+          <h4>RODENT REGIMEN/ THE CAPYBARA WORKOUT</h4>
+          <table>
             <th>Exercise Name</th>
             <th>Sets</th>
             <th>Reps</th>
             <tbody>
               <tr> 
                 <td>Exercise Name</td>
-
                 <td> sets </td>
                 <td> reps </td>
-               </tr>
-               <tr> 
+              </tr>
+              <tr> 
                 <td>Exercise Name</td>
                 <td> sets </td>
                 <td> reps </td>
-
-               </tr>
-              </tbody>
-            
+              </tr>
+            </tbody>           
           </table>
         </div>          
       </section>
-
-
-
     </article>
   </main>
-  <footer>The Capybara Way of Fitness</footer>
+  <footer>Footer</footer>
 
-
-
-
-  
 </body>
-
-
 
 </html>
 
