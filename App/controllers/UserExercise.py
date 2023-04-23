@@ -10,11 +10,11 @@ def create_UserExercise(name, reps, sets, weight):
 
 
 def get_userexercise(id):
-    return userExercise.query.filter_by(id=id)
+    return UserExercise.query.filter_by(id=id).first()
 
 
 def get_all_userexercise():
-    return userExercise.query.all()
+    return UserExercise.query.all()
 
 
 def update_userexercise(id, name, reps, sets, weight):

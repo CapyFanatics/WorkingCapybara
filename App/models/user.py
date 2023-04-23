@@ -13,50 +13,58 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
 
-    def add_exercise(self, exercise_id, name, reps, sets):
+    def add_exercise(self, exercise_id, name, reps, sets, weight):
         exercise = Exercise.query.get(exercise_id)
 
         if exercise:
             try:
-
-                user_exercise = UserExercise(self.id, exercise_id, name, reps, sets, weight)
-
+                user_exercise = UserExercise(
+                    user_id=self.id,
+                    exercise_id=exercise_id,
+                    name=name,
+                    reps=reps,
+                    sets=sets,
+                    weight=weight
+                )
                 db.session.add(user_exercise)
                 db.session.commit()
                 return user_exercise
-            except Exception:
+            except Exception as e:
                 db.session.rollback()
+                print(e)
                 return None
 
         return None
 
 
     def delete_exercise(self, exercise_id):
+        user_exercise = UserExercise.query.filter_by(
+            user_id=self.id, exercise_id=exercise_id
+        ).first()
 
-        exercise = Exercise.query.get(exercise_id)
-
-        if exercise.user == self:
-            db.session.delete(exercise)
+        if user_exercise:
+            db.session.delete(user_exercise)
             db.session.commit()
             return True
+
         return None
 
 
     def edit_exercise(self, exercise_id, name, reps, sets, weight):
-        exercise = UserExercise.query.get(exercise_id)
+        user_exercise = UserExercise.query.filter_by(
+            user_id=self.id, exercise_id=exercise_id
+        ).first()
 
+        if user_exercise:
+            user_exercise.name = name
+            user_exercise.reps = reps
+            user_exercise.sets = sets
+            user_exercise.weight = weight
 
-        if exercise.user == self:
-            exercise.name = name
-            exercise.reps = reps
-            exercise.sets = sets
-
-            exercise.weight = weight
-
-
-            db.session.add(exercise)
+            db.session.add(user_exercise)
             db.session.commit()
-            return True
+            return user_exercise
+
         return None
 
 

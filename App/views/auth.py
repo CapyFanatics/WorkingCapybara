@@ -4,6 +4,8 @@ from flask_login import login_required, login_user, current_user, logout_user
 import requests
 
 
+from App.controllers.user import User
+
 
 from App.models.user import User
 from App.models.Exercise import Exercise
@@ -121,7 +123,9 @@ def equipment_action():
         uuid = item['uuid']
         create_Exercise(name=name, uuid=uuid)
 
-    images = get_api_image(API_IMAGE, API_KEY)
+
+    images = get_api_image(uuid)
+
     return render_template("equipment.html", data=data['results'], images=images['results'])
 
 
@@ -131,7 +135,7 @@ API Routes
 
 @auth_views.route('/api/users', methods=['GET'])
 def get_users_action():
-    users = get_all_users_json()
+    users = get_api_data()
     return jsonify(users)
 
 @auth_views.route('/api/users', methods=['POST'])
