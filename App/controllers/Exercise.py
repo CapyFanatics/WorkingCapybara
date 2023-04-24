@@ -38,12 +38,6 @@ def get_api_data(API_URL, API_KEY):
     #     create_Exercise(item['name'], item['uuid'])
     return data
 
-def get_api_image(API_IMAGE, API_KEY):
-    response = requests.get(API_IMAGE, headers=({'X-Api-Key': 'API_KEY'}))
-    images = response.json()
-    return images
-
-
 
 def get_exercise(id):
     return Exercise.query.get(id)
