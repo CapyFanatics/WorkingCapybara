@@ -1,6 +1,6 @@
 from App.models import Exercise
 from App.database import db
-from flask import requests
+import requests
 
 API_URL = 'https://wger.de/api/v2/exercise/?language=2'
 API_KEY = 'db41e887abdeee70f768105f746b93afa2a1e856'
