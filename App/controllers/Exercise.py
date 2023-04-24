@@ -1,8 +1,8 @@
 from App.models import Exercise
 from App.database import db
 
-import requests
-
+import urllib.request
+import json
 
 API_URL = 'https://wger.de/api/v2/exercise/?language=2'
 API_KEY = 'db41e887abdeee70f768105f746b93afa2a1e856'
@@ -16,22 +16,25 @@ def create_Exercise(name, uuid):
     return NewExercise
 
 def get_api_data(API_URL, API_KEY):
-    response = requests.get(API_URL, headers=({'X-Api-Key': API_KEY}) )
-    data = response.json()
+    req = urllib.request.Request(API_URL, headers={'X-Api-Key': API_KEY})
+    response = urllib.request.urlopen(req)
+    data = json.loads(response.read())
 
     for item in data['results']:
         create_Exercise(item['name'], item['uuid'])
     return data
 
 def get_api_image(uuid):
-    response = requests.get(API_IMAGE.format(uuid), headers=({'X-Api-Key': API_KEY}))
-    images = response.json()
+    req = urllib.request.Request(API_IMAGE.format(uuid), headers={'X-Api-Key': API_KEY})
+    response = urllib.request.urlopen(req)
+    images = json.loads(response.read())
     return images
 
 
 def get_api_data(API_URL, API_KEY):
-    response = requests.get(API_URL, headers=({'X-Api-Key': 'API_KEY'}) )
-    data = response.json()
+    req = urllib.request.Request(API_URL, headers={'X-Api-Key': 'API_KEY'})
+    response = urllib.request.urlopen(req)
+    data = json.loads(response.read())
 
     # for item in data['results']:
     #     create_Exercise(item['name'], item['uuid'])
@@ -43,8 +46,6 @@ def get_exercise(id):
 
 def get_exercise_by_uuid(uuid):
     return Exercise.query.filter_by(uuid=uuid)
-
-
 
 
 def get_exercise_by_type(exercise_type):
