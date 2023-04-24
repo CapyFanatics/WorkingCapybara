@@ -41,12 +41,16 @@ def update_password(id, password):
         return user
     return None
     
-# def jwt_authenticate(username, password):
-#     user = get_user_by_username(username)
-#     if user and check_password_hash(user.password, password):
-#         return user
-#     else:
-#         return None
+def update_user_and_password(id, new_username, new_password):
+    user = get_user(id)
+    if user:
+        user.username = new_username
+        user.set_password(new_password)
+        db.session.add(user)
+        db.session.commit()
+        return user
+    return None
+
 
 def jwt_authenticate(username, password):
     user = get_user_by_username(username)

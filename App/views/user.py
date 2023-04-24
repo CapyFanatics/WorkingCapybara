@@ -48,3 +48,32 @@ def create_user_action():
 @user_views.route('/static/users', methods=['GET'])
 def static_user_page():
   return send_from_directory('static', 'static-user.html')
+
+
+
+@user_views.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'POST':
+        current_user.change_username(request.form.get('username'))
+        current_user.change_password(request.form.get('password'))
+        flash('Profile updated successfully!')
+        return redirect(url_for('user_views.profile'))
+
+    return render_template('profile.html', username=current_user.username)
+
+@user_views.route('/change_username', methods=['POST'])
+@login_required
+def change_username():
+    new_username = request.form['new_username']
+    current_user.change_username(new_username)
+    flash('Username changed successfully!')
+    return redirect(url_for('user_views.profile'))
+
+@user_views.route('/change_password', methods=['POST'])
+@login_required
+def change_password():
+    new_password = request.form['new_password']
+    current_user.change_password(new_password)
+    flash('Password changed successfully!')
+    return redirect(url_for('user_views.profile'))

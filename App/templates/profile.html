@@ -126,15 +126,9 @@
       <img id="user" src="https://images.gshah2001.repl.co/user.png">
 
       <div id="current">
-        <p>Current Username: </p>
-        <p>Current Email:</p>
+        <h1>Current username: {{ username }}</h1>
       </div>
       <form id="profileForm" method="POST" action="/profile">
-
-        <div class="row">
-          <label for="email">New Email</label>
-          <input placeholder="email" name="email" type="email" class="validate">
-        </div>
         
         <div class="row">
           <label for="username">New Username</label>
@@ -147,9 +141,8 @@
         </div>
 
          <div class="row justify-content">
-         
-             <input type="submit" class="btn" value="SAVE">
-            </div>
+          <button type="submit">Save changes</button>
+        </div>
           <div class="row justify-content">
        
             <a href="/equipment">&larr; Return to home page</a>
