@@ -2,11 +2,12 @@ from App.models import UserExercise
 from App.database import db
 
 
-def create_UserExercise(name, reps, sets, weight):
-    newuserexercise = UserExercise(name=name, reps=reps, sets=sets, weight = weight)
+def create_UserExercise( name, reps, sets):
+    newuserexercise = UserExercise(name=name, reps=reps, sets=sets)
     db.session.add(newuserexercise)
     db.session.commit()
     return newuserexercise
+
 
 
 def get_userexercise(id):

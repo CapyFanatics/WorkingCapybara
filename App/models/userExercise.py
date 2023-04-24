@@ -11,6 +11,7 @@ class UserExercise(db.Model):
     reps = db.Column(db.Integer, nullable=False)
     sets = db.Column(db.Integer, nullable=False)
     weight = db.Column(db.Float)
+    uuid = db.Column(db.String(200), nullable=False)
 
     def __repr__(self):
       return f'<UserExercise {self.id} : {self.name} User {self.user.username}>'

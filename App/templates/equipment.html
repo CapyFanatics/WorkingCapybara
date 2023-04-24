@@ -157,23 +157,26 @@ body {
 
   
   #selected{
-    float:right;
+    float:left;
     display: flex;
     flex-direction: column;
     background-color:#808080;
     color:black;
     border-radius:5px;
-    margin-left: 500px;
+    margin-left: 10px;
     font-family: fantasy;  
     letter-spacing: 2px;
     padding-left:15px;
     padding-right:15px;
+    width:100%;
+    border:solid white;
   }
   
   .row {
     display: flex;
     flex-direction: row;
     flex-grow: 3;
+    padding-bottom: 10px;
   }
   .text-center{
     display: flex;
@@ -189,9 +192,10 @@ body {
   }
  
   .card{
-    float:right;
+
     margin-right:25px;
-    margin-left:-450px;
+    
+    width:350px;
   }
   
   input[type=submit]  {
@@ -216,6 +220,7 @@ body {
    
   }
   .btn{
+    float:right;
     width:50px;
     height:40px;
     background-color: white;
@@ -303,7 +308,7 @@ body {
   
   ul, ul h2{
   padding-left:5px;
-  width: 400px;
+  width: 290px;
   list-style-type: none;
   
 }
@@ -318,11 +323,10 @@ body {
   .list-container{
     display:block;
     background-color:black;
-    height:100%;
+    height:1150px;
   }
 
-=
-  
+
  table, th, td {
   border:  solid;
   border-collapse: collapse;
@@ -368,7 +372,7 @@ body {
                 <ul>
 
                  {% for item in data %}
-                 <li>{{item['name']}}</li>
+                 <li><a href="#{{item['name']}}">{{item['name']}}</a></li>
                  <h1></h1>
                  {% endfor %}
 
@@ -381,27 +385,105 @@ body {
 
           <div class="card">
             <div  id="selected">
+             
               <h2>Selected Exercise</h2>
-                    
-                {% for item in images %} 
-                  <img src="{{item['image']}}" width= "300px" height="300px">
-                      <div class="card-content">
-    
-                        <span class="card-title">
-                          <h3>Name of exercise</h3>
+                  
+              
+              <div class="card-content">
+                
+                
+                {% for item in data%}
+                  {% if item['name'] == "2 Handed Kettlebell Swing" %}
+                    <img src="https://thehybridathlete.com/wp-content/uploads/2021/03/Two-handed-Swing.png" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "4-count burpees" %}
+                   <img src="https://www.healthbenefitstimes.com/9/uploads/2020/10/burpees-exercise-steps.jpg" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Abdominal Stabilization" %}
+                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwnWUFcG54lmhxRBIjlmwvmHyKIiZ4Ilmd8A&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Abduktion im Stand" %}
+                    <img src="https://cdn.discordapp.com/attachments/1098288693606887464/1099840401441046630/image.png" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Alternate back lunges" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyDoWQiZGi4KHY7yBccSkrV1rX4q0_A5tbUZVjobC7f8XKaeIwU25W89EVCIfnoaaAqWg&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Alternating bicep curls" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZSA9z-T62S5DyxEhCkKwoU5iXZGZcAwhV-Q&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Arnold Shoulder Press" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2wn3s_SWRnNGVam2CTRgYfVLGPh6oH70ESQ&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Axe Hold" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3tGlPEFZtj5zVI_9u45adfg4kgFciBp3RQM_VDiISJ4BNHW4MU_5d_qx8mFxLIgWDU2Y&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Back neck stretch" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ48aLlBIyICGPOsvRBC0mqRePK3RLg2V1sFg&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Backward arm circles" %}
+                    <img src="https://www.leashyourfitness.com/wp-content/uploads/2015/02/Arm-Circles-e1424662406134.jpg" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Backward shoulder rotation" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3jTXdxDJbpSYkrvAjlc69jisLG08LaB2DFZ0-a4TTkuGyPTWLRozjR2ggGWUMa0KniSE&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Bag training" %}
+                    <img src="https://img.freepik.com/premium-vector/boxing-training-flat-color-illustration-sportsman-with-punching-bag-athlete-exercising-gym-with-dumbbells-professional-boxer-2d-cartoon-characters-with-club-room-background_151150-3869.jpg" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Ball crunches" %}
+                    <img src="https://www.gofitnessplan.com/images/exercises/female/swissball-crunch.jpg" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Barbell Ab Rollout" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmTeCQ0HA_e9hqKlQlouDjFteyP2D8Ye3RCA&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Barbell Hack Squats" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2WT7rcSZO_odsB-GqDWOfRMpDo8qJJByV5w&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Barbell Hip Thrust" %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiaWSs0TqfNyBDIMy_4ebDiVzp4HNcuccNPw&usqp=CAU" width= "300px" height="300px">
+                  {% endif %}
+
+                  {% if item['name'] == "Barbell Lunges Standing" %}
+                    <img src="https://pump-app.s3.eu-west-2.amazonaws.com/exercise-assets/00781101-Barbell-Rear-Lunge_Thighs_small.jpg" width= "300px" height="300px">
+                  {% endif %}
+
+                        <span class="card-title" id="{{item['name']}}"> 
+                          
+                          <h3>{{item['name']}}</h3>
+
                         </span>
                         <!-- {% for item in images %} -->
                         <!-- {{item['image']}} -->
                         <!-- <img src="{{item['image']}}">
                         {% endfor %} -->
+                         
                         
                               
                         <div class="row">
-                          <p>Equipment needed</p>
+                          
                           <button class="btn right" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
+                       
+                          
                         </div>
-                {% endfor %}                
-
+                       
+                        {% endfor %} 
+                        
+                       
+                       
                             <!---<div class="row">
 
                               <p>Exercise 2: selected_exercise.type2</p>
@@ -415,44 +497,51 @@ body {
 
                               <input class="btn green  " type="submit" id="addBtn" value="ADD" />
                             </div>-->
-                       
-                            <div class="modal" id="add-modal" style="opacity: 1; top:20%; transform: scaleX(1) scaleY(1); z-index:100">
+                            <div class="modal" id="add-modal" style="opacity: 1; top:20%; transform: scaleX(1) scaleY(1); z-index:100; width:350px; height:250px">
+                           
+                              <form name="addForm" id="addExer" method="POST" action="/equipment/add-exercise/exercise-name">
 
-                              <form name="addForm" id="addExer" method="POST" action="/add-exercise/exercise.id">
-
-
+                              
                                 <div class="add-modal-content">
                                   <div id="modal-header">
                                     <span class="add-modal-title"><h5>Add Exercise</h5></span>
                                    <span onclick="document.getElementById('add-modal').style.display='none'" id="close" class="closebtn red right"> &times;</span>
                                     
                                   </div>
-                                  <div class="input-field">
+                                  <div class="input-field" style="height:120px">
 
-                                    <input type="text-sets" name="Sets" id=exercise.sets class="materialize-textarea">
+                                    <input type="text-sets" name="Sets" id=exercise.sets class="materialize-textarea" >
                                     <label for="text-sets"> Sets</label> 
                                     <input type="text-reps" name="Reps" id=exercise.reps  class="materialize-textarea">
 
 
 
                                     <label for="text-reps"> Reps</label> 
+                                    <br>
+                                    <label></label>
+                                    <br>
+
+                                    <input type="text-exercise" name="exercise" id=exercise.name class="materialize-textarea" style="padding:10px">
+                                    <br>
+                                    <label for="text-exercise"> Exercise Name</label> 
                                   </div>
                                 </div>
 
                                 <div class="row">
                             
                               <button class="Addbtn" onclick="document.getElementById('add-modal').style.display='block'">ADD</button>
-                            </div>
+                            </div> 
                               </form>
+                              
                             </div>
-                                
-                     </div>
-                               
+                           
+                                             
             
           </div>
       
         </div>
-
+      </div>
+       
 
 
         <div class="col" id="Userexer">
@@ -463,9 +552,9 @@ body {
             <th>Reps</th>
             <tbody>
               <tr> 
-                <td>Exercise Name</td>
-                <td> sets </td>
-                <td> reps </td>
+                <td>{{exercise_name}}</td>
+                <td> {{sets}} </td>
+                <td> {{reps}} </td>
               </tr>
               <tr> 
                 <td>Exercise Name</td>
@@ -483,4 +572,3 @@ body {
 </body>
 
 </html>
-

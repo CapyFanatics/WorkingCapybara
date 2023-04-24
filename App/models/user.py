@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
 
-    def add_exercise(self, exercise_id, name, reps, sets, weight):
-        exercise = Exercise.query.get(exercise_id)
+    def add_exercise(self, exercise_uuid, name, reps, sets, weight):
+        exercise = Exercise.query.filter_by(exercise_uuid).first()
 
         if exercise:
             try:
@@ -24,7 +24,8 @@ class User(db.Model, UserMixin):
                     name=name,
                     reps=reps,
                     sets=sets,
-                    weight=weight
+                    weight=weight,
+                    uuid=uuid
                 )
                 db.session.add(user_exercise)
                 db.session.commit()
@@ -37,9 +38,9 @@ class User(db.Model, UserMixin):
         return None
 
 
-    def delete_exercise(self, exercise_id):
+    def delete_exercise(self, exercise_uuid):
         user_exercise = UserExercise.query.filter_by(
-            user_id=self.id, exercise_id=exercise_id
+            user_id=self.id, exercise_uuid=exercise_uuid
         ).first()
 
         if user_exercise:
@@ -50,9 +51,9 @@ class User(db.Model, UserMixin):
         return None
 
 
-    def edit_exercise(self, exercise_id, name, reps, sets, weight):
+    def edit_exercise(self, exercise_uuid, name, reps, sets, weight):
         user_exercise = UserExercise.query.filter_by(
-            user_id=self.id, exercise_id=exercise_id
+            user_id=self.id, exercise_uuid=exercise_uuid
         ).first()
 
         if user_exercise:
@@ -60,6 +61,7 @@ class User(db.Model, UserMixin):
             user_exercise.reps = reps
             user_exercise.sets = sets
             user_exercise.weight = weight
+            user_exercise.uuid = uuid
 
             db.session.add(user_exercise)
             db.session.commit()

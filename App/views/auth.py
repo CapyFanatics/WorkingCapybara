@@ -24,7 +24,8 @@ from App.controllers import (
     get_exercise_by_type,
     get_api_data,
     get_api_image,
-    create_Exercise
+    create_Exercise,
+    create_UserExercise
 
 )
 
@@ -117,16 +118,28 @@ def logout_action():
 def equipment_action():
 
     data = get_api_data(API_URL, API_KEY)
+    images = get_api_image(API_IMAGE, API_KEY)
 
     for item in data['results']:
-        name = item['name']
-        uuid = item['uuid']
-        create_Exercise(name=name, uuid=uuid)
-
-
-    images = get_api_image(uuid)
+        for pic in images['results']:
+            if item['uuid'] == pic['uuid']:
+             name = item['name']
+             uuid = item['uuid']
+             image = pic['image']
+             create_Exercise(name=name, uuid=uuid, image=image)
 
     return render_template("equipment.html", data=data['results'], images=images['results'])
+
+@auth_views.route('/equipment/add-exercise/exercise-name', methods=['POST'])
+@jwt_required
+def add_user_exercise():
+    data = request.json
+    exercise_name = data['name']
+    reps = data['reps']
+    sets = data['sets']
+    new_user_exercise = create_UserExercise(exercise_name, reps, sets)
+    
+    return render_template("equipment.html", exercise_name=exercise_name, reps=reps, sets=sets)
 
 
 '''
